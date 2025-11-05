@@ -266,4 +266,4 @@ async def drop_check():
 
 
 keep_alive()
-bot.run("MTQzMTk0MDgxMDczNTA5NTg0OQ.GYcGVV.juhe2btcGuZ6ze8iJ_bkpizB0rN4Y4EPsFn8lo")
+bot.run("MTQzMTk0MDgxMDczNTA5NTg0OQ.GECYgu._GpagEdhUDWfIJCAl_WkpL4kAiBg8ZAy4T_Zqc")
