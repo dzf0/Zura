@@ -298,3 +298,4 @@ async def drop_check():
 
 
 keep_alive()
+bot.run(TOKEN)
