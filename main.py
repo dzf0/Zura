@@ -7,16 +7,36 @@ import asyncio
 from keep_alive import keep_alive  
 from dotenv import load_dotenv
 
-load_dotenv()  # Load all variables from .env
-TOKEN = os.getenv("TOKEN")  # Get the TOKEN variable
+# Load environment variables
+load_dotenv()
+TOKEN = os.getenv("TOKEN")
 
-client = discord.Client()
+# --- Define intents (very important!) ---
+intents = discord.Intents.default()
+intents.message_content = True  # Required to read messages
+intents.guilds = True
+intents.members = True
+
+# --- Create the client with intents ---
+client = discord.Client(intents=intents)
 
 @client.event
 async def on_ready():
-    print(f"Logged in as {client.user}")
+    print(f"✅ Logged in as {client.user}")
 
+@client.event
+async def on_message(message):
+    # Ignore messages from the bot itself
+    if message.author == client.user:
+        return
+
+    # Example simple command
+    if message.content.startswith("!hello"):
+        await message.channel.send(f"Hello {message.author.display_name}! 👋")
+
+# --- Run the bot ---
 client.run(TOKEN)
+
 
 intents = discord.Intents.default()
 intents.message_content = True
