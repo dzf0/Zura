@@ -5,6 +5,18 @@ import json
 import os
 import asyncio
 from keep_alive import keep_alive  
+from dotenv import load_dotenv
+
+load_dotenv()  # Load all variables from .env
+TOKEN = os.getenv("TOKEN")  # Get the TOKEN variable
+
+client = discord.Client()
+
+@client.event
+async def on_ready():
+    print(f"Logged in as {client.user}")
+
+client.run(TOKEN)
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -266,4 +278,3 @@ async def drop_check():
 
 
 keep_alive()
-bot.run("MTQzMTk0MDgxMDczNTA5NTg0OQ.G-Bh8b._fkCEHGLCSR9T9dZi7WdsSUSmAJMQwzQ8f_O3Q")
